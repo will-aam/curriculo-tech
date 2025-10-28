@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currículo Tech</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🚀 Currículo Tech</h1>
+        <p class="subtitle">Preencha em 3 minutos</p>
+      </header>
+
+      <form id="teamForm" novalidate>
+        <!-- Dados Básicos -->
+        <section class="form-section">
+          <h3>Seus Dados*</h3>
+          <div class="input-group">
+            <input type="text" id="nome" placeholder="Primeiro Nome" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <input
+              type="text"
+              id="github"
+              placeholder="GitHub (ex: github.com/usuario)"
+              required
+            />
+            <input type="date" id="nascimento" required />
+          </div>
+        </section>
+
+        <!-- Conhecimentos -->
+        <section class="form-section">
+          <h3>Soft Skills / Ferramentas Conhecidas*</h3>
+          <p class="hint">
+            Ex: React (7/10), Git (8/10), Resolução de problemas,
+            Proatividade...
+          </p>
+          <textarea
+            id="conhecimentos"
+            placeholder="Liste com nível de 0 a 10..."
+            rows="6"
+            required
+          ></textarea>
+        </section>
+
+        <!-- Interesses -->
+        <section class="form-section">
+          <h3>Quero Aprender*</h3>
+          <p class="hint">
+            Ex: Next.js, Docker, Testes com Jest, Liderança técnica...
+          </p>
+          <textarea
+            id="interesses"
+            placeholder="O que você quer dominar?"
+            rows="5"
+            required
+          ></textarea>
+        </section>
+
+        <button type="submit" class="submit-btn">
+          <span id="btn-text">Enviar Currículo</span>
+          <span id="btn-loading" class="hidden">Enviando...</span>
+        </button>
+      </form>
+
+      <!-- Mensagem de Sucesso -->
+      <div id="success-message" class="success-hidden">
+        <h2>Enviado com sucesso!</h2>
+        <p>Vamos construir algo incrível juntos!</p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
