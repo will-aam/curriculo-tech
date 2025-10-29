@@ -13,6 +13,7 @@
   --accent-hover: #00b8d9;
   --success: #4ade80;
   --border: #333333;
+  --border-focus: #00d4ff;
   --radius: 12px;
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   --transition: all 0.3s ease;
@@ -69,21 +70,39 @@ header h1 {
   color: var(--accent);
 }
 
+.section-hint {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
 .input-group {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 @media (min-width: 480px) {
   .input-group {
     grid-template-columns: 1fr 1fr;
   }
+}
 
-  .input-group input:nth-child(3),
-  .input-group input:nth-child(4) {
-    grid-column: span 2;
-  }
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.input-wrapper label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
 }
 
 input,
@@ -101,7 +120,7 @@ textarea {
 
 input:focus,
 textarea:focus {
-  border-color: var(--accent);
+  border-color: var(--border-focus);
   box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
 }
 
@@ -116,11 +135,31 @@ textarea {
   min-height: 100px;
 }
 
-.hint {
-  font-size: 0.9rem;
+.input-hint {
+  font-size: 0.8rem;
   color: var(--text-secondary);
-  margin-bottom: 0.5rem;
+  margin-top: 0.4rem;
   font-style: italic;
+}
+
+/* Estilos para o campo do GitHub */
+.github-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.github-prefix {
+  position: absolute;
+  left: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#github {
+  padding-left: 110px; /* Espaço para o prefixo */
 }
 
 .submit-btn {
@@ -186,11 +225,6 @@ textarea {
 
   .input-group {
     grid-template-columns: 1fr;
-  }
-
-  .input-group input:nth-child(3),
-  .input-group input:nth-child(4) {
-    grid-column: span 1;
   }
 }
 

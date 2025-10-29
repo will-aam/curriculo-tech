@@ -16,54 +16,83 @@
   <body>
     <div class="container">
       <header>
-        <h1>🚀 Currículo Tech</h1>
-        <p class="subtitle">Preencha em 3 minutos</p>
+        <h1>Currículo Tech</h1>
       </header>
 
       <form id="teamForm" novalidate>
         <!-- Dados Básicos -->
         <section class="form-section">
-          <h3>Seus Dados*</h3>
+          <h3>Seus Dados</h3>
           <div class="input-group">
-            <input type="text" id="nome" placeholder="Primeiro Nome" required />
-            <input type="email" id="email" placeholder="Email" required />
-            <input
-              type="text"
-              id="github"
-              placeholder="GitHub (ex: github.com/usuario)"
-              required
-            />
-            <input type="date" id="nascimento" required />
+            <div class="input-wrapper">
+              <label for="nome">Primeiro Nome*</label>
+              <input type="text" id="nome" placeholder="Ex: João" required />
+            </div>
+            <div class="input-wrapper">
+              <label for="email">Email*</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Ex: joao@email.com"
+                required
+              />
+            </div>
+            <div class="input-wrapper full-width">
+              <label for="github">GitHub*</label>
+              <div class="github-input-container">
+                <span class="github-prefix">github.com/</span>
+                <input
+                  type="text"
+                  id="github"
+                  placeholder="Seu nome de usuário"
+                  required
+                />
+              </div>
+              <p class="input-hint">Apenas o nome de usuário, sem https://</p>
+            </div>
+            <div class="input-wrapper full-width">
+              <label for="nascimento">Data de Nascimento*</label>
+              <input type="date" id="nascimento" required />
+            </div>
           </div>
         </section>
 
         <!-- Conhecimentos -->
         <section class="form-section">
-          <h3>Soft Skills / Ferramentas Conhecidas*</h3>
-          <p class="hint">
+          <h3>Soft Skills</h3>
+          <p class="section-hint">
             Ex: React (7/10), Git (8/10), Resolução de problemas,
             Proatividade...
           </p>
-          <textarea
-            id="conhecimentos"
-            placeholder="Liste com nível de 0 a 10..."
-            rows="6"
-            required
-          ></textarea>
+          <div class="input-wrapper">
+            <label for="conhecimentos"
+              >Liste suas habilidades e ferramentas com nível de
+              proficiência*</label
+            >
+            <textarea
+              id="conhecimentos"
+              placeholder="Liste suas habilidades com nível de 0 a 10..."
+              rows="6"
+              required
+            ></textarea>
+          </div>
         </section>
 
         <!-- Interesses -->
         <section class="form-section">
-          <h3>Quero Aprender*</h3>
-          <p class="hint">
+          <h3>Quero Aprender</h3>
+          <p class="section-hint">
             Ex: Next.js, Docker, Testes com Jest, Liderança técnica...
           </p>
-          <textarea
-            id="interesses"
-            placeholder="O que você quer dominar?"
-            rows="5"
-            required
-          ></textarea>
+          <div class="input-wrapper">
+            <label for="interesses">O que você quer dominar?*</label>
+            <textarea
+              id="interesses"
+              placeholder="Tecnologias ou habilidades que você deseja aprender..."
+              rows="5"
+              required
+            ></textarea>
+          </div>
         </section>
 
         <button type="submit" class="submit-btn">

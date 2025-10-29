@@ -11,12 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const GOOGLE_APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbwJjvK4TFfy9j1QRiNx4Fd7wl4uuzfuoQg2eZegQQzkIGib084GSdoq7uOmKPfwtqzR/exec";
 
-  const showError = (input, message) => {
+  const showError = (inputWrapper, message) => {
+    const input = inputWrapper.querySelector("input, textarea");
     input.classList.add("error");
     const errorEl = document.createElement("div");
     errorEl.className = "error-message";
     errorEl.textContent = message;
-    input.parentNode.appendChild(errorEl);
+    inputWrapper.appendChild(errorEl);
   };
 
   const clearErrors = () => {
@@ -77,7 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const nome = document.getElementById("nome").value.trim();
     const email = document.getElementById("email").value.trim();
-    const github = document.getElementById("github").value.trim();
+    const githubUsername = document.getElementById("github").value.trim();
+    const github = `https://github.com/${githubUsername}`;
     const nascimento = document.getElementById("nascimento").value;
     const conhecimentos = document.getElementById("conhecimentos").value.trim();
     const interesses = document.getElementById("interesses").value.trim();
@@ -86,31 +88,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Validações
     if (!nome || nome.length < 2) {
-      showError(document.getElementById("nome"), "Nome muito curto");
+      showError(
+        document.getElementById("nome").closest(".input-wrapper"),
+        "Nome muito curto"
+      );
       valid = false;
     }
 
     if (!isValidEmail(email)) {
-      showError(document.getElementById("email"), "Email inválido");
+      showError(
+        document.getElementById("email").closest(".input-wrapper"),
+        "Email inválido"
+      );
       valid = false;
     }
 
-    if (!isValidGithub(github)) {
+    if (!isValidGithub(githubUsername)) {
       showError(
-        document.getElementById("github"),
-        "GitHub inválido (só o usuário)"
+        document.getElementById("github").closest(".input-wrapper"),
+        "GitHub inválido (apenas o nome de usuário)"
       );
       valid = false;
     }
 
     if (!nascimento || !isValidBirthDate(nascimento)) {
-      showError(document.getElementById("nascimento"), "Data inválida");
+      showError(
+        document.getElementById("nascimento").closest(".input-wrapper"),
+        "Data inválida"
+      );
       valid = false;
     }
 
     if (!conhecimentos || conhecimentos.length < 10) {
       showError(
-        document.getElementById("conhecimentos"),
+        document.getElementById("conhecimentos").closest(".input-wrapper"),
         "Descreva pelo menos uma habilidade"
       );
       valid = false;
@@ -118,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!interesses || interesses.length < 5) {
       showError(
-        document.getElementById("interesses"),
+        document.getElementById("interesses").closest(".input-wrapper"),
         "Diga o que quer aprender"
       );
       valid = false;
@@ -130,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const payload = {
       nome,
       email,
-      github,
+      github, // URL completo
       nascimento,
       conhecimentos,
       interesses,
